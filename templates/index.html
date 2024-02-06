@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script ></script>
+    <title>API Tester</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #c185d3;
+        color: #333;
+        text-align: center;
+        
+    }
+
+    header {
+        background-color: #dbc234;
+        padding: 1em;
+        color: white;
+    }
+
+    main {
+       
+    }
+
+    h1 {
+        color: #f6cf4f;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.6em;
+        color: #ffffff;
+    }
+
+    footer {
+        background-color: #3498db;
+        padding: 1em;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    button {
+        border-radius: 5px;
+        border: transparent;
+        width: 5%;
+    }
+</style>
+<body>
+    <div class="main">
+        <h1>Cat Fact:</h1>
+        <button onclick="Nextfact()">next fact</button>
+    <p>{{ fact }}</p>
+    </div>
+    <script>
+        function Nextfact() {
+            fetch('/next_fact')  // This route should be handled by your Flask app
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('p').innerText = data.fact;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
